@@ -9,7 +9,7 @@ async function getData() {
 function addElementToCardsContainer(data, card) {
   const container = document.querySelector('.cards-container');
   data.forEach((element) => {
-    container.innerHTML += card(element);
+    container.append(card(element));
   });
 }
 
@@ -21,6 +21,28 @@ const petsObjShape = {
   archived: 0,
 };
 
+function simpleButton(text, classname, action) {
+  const but = document.createElement('button');
+  but.textContent = text;
+  but.className = classname;
+  but.addEventListener('click', () => {
+    action();
+  });
+  return but;
+}
+
+function simpleContainer(classname) {
+  const cont = document.createElement('div');
+  cont.className = classname;
+  return cont;
+}
+
+function actionViewLog(id) {
+  window.location = `medications.html/?id=${id}`;
+}
+
+function actionDelete() {}
+
 function createCard(petObj) {
   const year = new Date(petObj.dob).getFullYear();
   const month = new Date(petObj.dob).getMonth() + 1;
@@ -30,18 +52,26 @@ function createCard(petObj) {
     day <= 9 ? '0' + day : day
   }`;
 
-  const content = `<div class="card">
-      <h3>${petObj.name}</h3>
+  const maincont = simpleContainer('card');
+  // Button wrapper
+  const butcont = simpleContainer('but-div');
+  const viewbutton = simpleButton('View Log', 'main-btn', () =>
+    actionViewLog(petObj.id),
+  );
+  const delbutton = simpleButton('Delete', 'main-btn main-btn-inverse');
+  butcont.append(viewbutton, delbutton);
+
+  const content = `<h3>${petObj.name}</h3>
       <div class="card-text">
         <p>${dob}</p>
         <p>${petObj.client_email}</p>
       </div>
-      <div>
-        <button class="main-btn">View Log</button>
-        <button class="main-btn main-btn-inverse">Delete</button>
-      </div>
-    </div>`;
-  return content;
+    `;
+
+  maincont.innerHTML = content;
+  maincont.append(butcont);
+
+  return maincont;
 }
 
 getData().then((data) => {
