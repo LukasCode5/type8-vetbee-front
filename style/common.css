@@ -1,0 +1,32 @@
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'); */
+
+:root {
+  --mainColor: #fb8016;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  color: var(--mainColor);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 250px;
+  border-bottom: 1px solid rgb(223, 217, 217);
+}
+
+header h1 {
+  color: var(--mainColor);
+}
+
+header div:last-of-type a {
+  padding: 0 10px;
+}
