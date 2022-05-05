@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'http://localhost:3000';
 
 async function getData() {
   const reach = await fetch(`${baseUrl}/api/pets`);
@@ -38,7 +38,7 @@ function simpleContainer(classname) {
 }
 
 function actionViewLog(id) {
-  window.location = `medications.html/?id=${id}`;
+  window.location.href = `pet-log.html?id=${id}`;
 }
 
 function actionDelete() {}
@@ -48,16 +48,12 @@ function createCard(petObj) {
   const month = new Date(petObj.dob).getMonth() + 1;
   const day = new Date(petObj.dob).getDate();
 
-  const dob = `${year}-${month <= 9 ? '0' + month : month}-${
-    day <= 9 ? '0' + day : day
-  }`;
+  const dob = `${year}-${month <= 9 ? '0' + month : month}-${day <= 9 ? '0' + day : day}`;
 
   const maincont = simpleContainer('card');
   // Button wrapper
   const butcont = simpleContainer('but-div');
-  const viewbutton = simpleButton('View Log', 'main-btn', () =>
-    actionViewLog(petObj.id),
-  );
+  const viewbutton = simpleButton('View Log', 'main-btn', () => actionViewLog(petObj.id));
   const delbutton = simpleButton('Delete', 'main-btn main-btn-inverse');
   butcont.append(viewbutton, delbutton);
 

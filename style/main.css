@@ -31,3 +31,9 @@ footer {
   text-align: center;
   padding: 20px 0;
 }
+
+.filter{
+  display:flex;
+  gap: 3px;
+  align-items: center;
+}
