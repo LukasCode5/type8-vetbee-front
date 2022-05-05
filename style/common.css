@@ -2,11 +2,18 @@
 
 :root {
   --mainColor: #fb8016;
+  --inverseColor: white;
+  --mainBodyColor: rgb(110, 110, 110);
 }
 
 * {
   box-sizing: border-box;
   margin: 0px;
+}
+
+body{
+  color: var(--mainBodyColor);
+  font-weight: normal;
 }
 
 a {
@@ -23,10 +30,35 @@ header {
   border-bottom: 1px solid rgb(223, 217, 217);
 }
 
-header h1 {
+header h3 {
   color: var(--mainColor);
+  font-size: 32px;
 }
 
 header div:last-of-type a {
   padding: 0 10px;
+}
+
+.main-btn{
+  background-color: var(--mainColor);
+  color: white;
+  border-radius: 5px;
+  padding:10px 30px;
+  border: none;
+  font-weight: bold;
+
+}
+.main-btn.main-btn-inverse{
+  background-color: var(--inverseColor);
+  color: var(--mainColor);
+  border: 1px solid var(--mainColor);
+}
+
+.pet-list{
+  padding: 50px 250px;
+}
+
+.main-title{
+  display: flex;
+  justify-content: space-between;
 }
